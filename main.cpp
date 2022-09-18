@@ -2,6 +2,7 @@
 #include "Queue.h"
 #include "Hashmap.h"
 #include "HashmapChained.h"
+#include "Heap.h"
 using namespace std;
 
 void testLinkedlist(){
@@ -70,12 +71,22 @@ void testHashmapChained(){
   T.print();
 }
 
+void testHeap(){
+  int list[] = {4,1,3,2,16,9,10,14,8,7};
+  Heap T(list, sizeof(list)/sizeof(int), 10);
+  T.print();
+
+  T.sortHeap();
+  T.print();
+}
+
 int main ()
 {
   // testLinkedlist();
   // testQueue();
   // testHashmap();
-  testHashmapChained();
+  // testHashmapChained();
+  testHeap();
 
 
   return 0;
