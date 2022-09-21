@@ -54,6 +54,7 @@ int HashmapChained::insert(Item* x){
 int HashmapChained::insert(int k){
     Item* x = new Item(k);
     this->insert(x);
+    return k;
 }
 
 Item* HashmapChained::search(int k){

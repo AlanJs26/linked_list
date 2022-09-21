@@ -80,13 +80,24 @@ void testHeap(){
   T.print();
 }
 
+void testPriorityList(){
+  int list[] = {4,1,3,2,16,9,10,14,8,7};
+  Heap T(list, sizeof(list)/sizeof(int), 13);
+
+  T.print();
+  T.remove(1);
+
+  T.print();
+}
+
 int main ()
 {
   // testLinkedlist();
   // testQueue();
   // testHashmap();
   // testHashmapChained();
-  testHeap();
+  // testHeap();
+  testPriorityList();
 
 
   return 0;

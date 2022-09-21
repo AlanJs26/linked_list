@@ -27,6 +27,33 @@ void Heap::initializeFromArray(int arr[], int arrSize, int tamanho){
             list[i] = NULL;
         }
     }
+    this->sortHeap();
+}
+
+Item* Heap::operator[](int index){
+    if(validIndex(index)){
+        return list[index];
+    }
+    return NULL;
+}
+
+void Heap::upwardsHeapify(int index){
+    if (index < 1 || !validIndex(index)) {
+        return;
+    }
+
+    int chave = list[index]->chave;
+
+    int i = index;
+    Item* temp;
+
+    while (i >= 1 && (list[pai(i)] && list[pai(i)]->chave < chave))
+    {
+        temp = list[i];
+        list[i] = list[pai(i)];
+        list[pai(i)] = temp;
+        i = pai(i);
+    }
 }
 
 Heap::Heap(int tamanho){
@@ -106,10 +133,26 @@ void Heap::sortHeap(){
     }
 }
 
+
+Item* Heap::remove(int index){
+    if (heapSize < 1) {
+        return NULL;
+    }
+
+    Item* x = list[index];
+    list[index] = list[heapSize-1];
+    list[heapSize-1] = NULL;
+    heapSize--;
+    heapify(index);
+
+    return x;
+}
+
 void Heap::insert(Item* x){
     if(heapSize < tamanho){
         list[heapSize] = x;
         heapSize++;
+        upwardsHeapify(heapSize-1);
     }
 }
 

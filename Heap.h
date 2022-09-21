@@ -13,6 +13,7 @@ class Heap {
     bool isMax = true;
     bool validIndex(int index);
     void heapify(int index);
+    void upwardsHeapify(int index);
 
     void initialize(int tamanho);
     void initializeFromArray(int arr[], int arrSize, int tamanho);
@@ -29,10 +30,10 @@ class Heap {
     int pai(int index);
 
     void sortHeap();
-    // Item* operator[](int index);
+    Item* operator[](int index);
     void insert(Item* x);
     void insert(int k);
-    // int remove(Item* x);
+    Item* remove(int index);
     // Item* search(int k);
     void print();
 };

@@ -9,17 +9,17 @@ int Hashmap::hash(int k){
     return k % this->size; 
 }
 
-Hashmap::Hashmap(int size){
-    list = (Item**) malloc(size * sizeof(Item*));
-    this->size = size;
+Hashmap::Hashmap(int size) : size(size){
+    list = new Item*[size];
+
     for (int i = 0; i < this->size; i++)
     {
         list[i] = NULL;
     }
 }
-Hashmap::Hashmap(int size, int(*h)(int)){
-    list = (Item**) malloc(size * sizeof(Item*));
-    this->size = size;
+Hashmap::Hashmap(int size, int(*h)(int)) : size(size){
+    list = new Item*[size];
+
     for (int i = 0; i < this->size; i++)
     {
         list[i] = NULL;
@@ -34,7 +34,7 @@ Hashmap::~Hashmap(){
             delete list[i];
         }
     }
-    free(list);
+    delete[] list;
 }
 
 Item* Hashmap::operator[](int index){
@@ -55,11 +55,13 @@ int Hashmap::insert(Item* x){
             }
         }
     }while(j != hash(x->chave));
+
     return -1;
 }
 int Hashmap::insert(int k){
     Item* x = new Item(k);
     this->insert(x);
+    return k;
 }
 
 Item* Hashmap::search(int k){
@@ -79,6 +81,7 @@ Item* Hashmap::search(int k){
             }
         }
     }while(j != hash(k) && list[j] != NULL);
+    return NULL;
 }
 
 
