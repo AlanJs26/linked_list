@@ -4,31 +4,37 @@
 #include <string>
 using namespace std;
 
-void Heap::initialize(int tamanho){
-    list = (Item**) malloc(tamanho * sizeof(Item*));
+Heap::Heap(int tamanho){
+    list = new Item*[tamanho];
     this->tamanho = tamanho;
-    for (int i = 0; i < this->tamanho; i++)
-    {
+    for (int i = 0; i < this->tamanho; i++) {
         list[i] = NULL;
     }
 }
-
-void Heap::initializeFromArray(int arr[], int arrSize, int tamanho){
-    list = (Item**) malloc(tamanho * sizeof(Item*));
-    this->tamanho = tamanho;
+Heap::Heap(int tamanho, bool isMax) : Heap(tamanho){
+    this->isMax = isMax;
+}
+Heap::Heap(int arr[], int arrSize, int tamanho) : Heap(tamanho){
     this->heapSize = arrSize;
 
-    Item* x;
-    for (int i = 0; i < tamanho; i++) {
-        if(i < arrSize){
-            x = new Item(arr[i]);
-            list[i] = x;
-        }else{
-            list[i] = NULL;
-        }
+    for (int i = 0; i < arrSize; i++) {
+        list[i] = new Item(arr[i]);
     }
     this->sortHeap();
 }
+Heap::Heap(int arr[], int arrSize, int tamanho, bool isMax) : Heap(arr,arrSize,tamanho){
+    this->isMax = isMax;
+}
+
+Heap::~Heap(){
+    for (int i = 0; i < this->tamanho; i++){
+        if (list[i] != NULL) {
+            delete list[i];
+        }
+    }
+    delete[] list;
+}
+
 
 Item* Heap::operator[](int index){
     if(validIndex(index)){
@@ -56,31 +62,6 @@ void Heap::upwardsHeapify(int index){
     }
 }
 
-Heap::Heap(int tamanho){
-    this->initialize(tamanho);
-}
-Heap::Heap(int tamanho, bool isMax){
-    this->initialize(tamanho);
-    this->isMax = isMax;
-}
-Heap::Heap(int arr[], int arrSize, int tamanho){
-    this->initializeFromArray(arr, arrSize, tamanho);
-}
-Heap::Heap(int arr[], int arrSize, int tamanho, bool isMax){
-    this->initializeFromArray(arr, arrSize, tamanho);
-    this->isMax = isMax;
-}
-
-
-Heap::~Heap(){
-    for (int i = 0; i < this->tamanho; i++){
-        if (list[i] != NULL)
-        {
-            delete list[i];
-        }
-    }
-    free(list);
-}
 
 
 int Heap::filhoEsquerda(int index){
@@ -127,12 +108,32 @@ void Heap::heapify(int index){
 }
 
 void Heap::sortHeap(){
-    for (int i = pai(heapSize); i >= 0; i--)
-    {
+    for (int i = pai(heapSize); i >= 0; i--) {
         heapify(i);
     }
 }
 
+int Heap::getSize(){
+    return this->heapSize;
+}
+
+void Heap::replace(int index, Item* x){
+    if(!validIndex(index) || x->chave < 0){
+        return;
+    }
+
+    if(x->chave > list[pai(index)]->chave){
+        list[index] = x;
+        upwardsHeapify(index);
+    }else if(x->chave < list[index]->chave){
+        list[index] = x;
+        heapify(index);
+    }
+}
+void Heap::replace(int index, int k){
+    Item* x = new Item(k);
+    replace(index, x);
+}
 
 Item* Heap::remove(int index){
     if (heapSize < 1) {
@@ -180,9 +181,6 @@ string centered(int width, int value) {
 
 
 void Heap::print(){
-
-    // cout << previousPai << endl;
-
     for (int j = 0; j < heapSize; j++)
     {
         cout << list[j]->chave << " ";

@@ -6,7 +6,8 @@ Aqui foram implementadas as seguintes estruturas de dados:
 - **Fila** (queue)
 - **Tabela Hash** (hashmap) usando **sondagem linear** (linear probing) no caso de conflito
 - **Tabela Hash** (hashmap) usando **encadeamento** no caso de conflito
-- **Heap**
+- **Heap** (Max e Min)
+- **Lista de Prioridade**
 
 ## Testar
 

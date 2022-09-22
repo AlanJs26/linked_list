@@ -1,7 +1,6 @@
 #ifndef HEAP_h
 #define HEAP_h
 
-#include "Linkedlist.h"
 #include "Item.h"
 
 
@@ -11,12 +10,11 @@ class Heap {
     int tamanho;
     int heapSize = 0;
     bool isMax = true;
+
     bool validIndex(int index);
     void heapify(int index);
     void upwardsHeapify(int index);
-
-    void initialize(int tamanho);
-    void initializeFromArray(int arr[], int arrSize, int tamanho);
+    void sortHeap();
 
   public:
     Heap(int tamanho);
@@ -29,8 +27,12 @@ class Heap {
     int filhoDireita(int index);
     int pai(int index);
 
-    void sortHeap();
     Item* operator[](int index);
+    
+    void replace(int index, Item* x);
+    void replace(int index, int k);
+    int getSize();
+
     void insert(Item* x);
     void insert(int k);
     Item* remove(int index);

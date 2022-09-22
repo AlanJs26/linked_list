@@ -3,6 +3,7 @@
 #include "Hashmap.h"
 #include "HashmapChained.h"
 #include "Heap.h"
+#include "PriorityList.h"
 using namespace std;
 
 void testLinkedlist(){
@@ -76,16 +77,17 @@ void testHeap(){
   Heap T(list, sizeof(list)/sizeof(int), 10);
   T.print();
 
-  T.sortHeap();
-  T.print();
 }
 
 void testPriorityList(){
-  int list[] = {4,1,3,2,16,9,10,14,8,7};
-  Heap T(list, sizeof(list)/sizeof(int), 13);
+  int list[] = {36,18,28,16,15,25,20};
+
+  PriorityList T(list, sizeof(list)/sizeof(int), 13);
 
   T.print();
-  T.remove(1);
+  T.extractTop();
+  T.insert(26);
+  T.extractTop();
 
   T.print();
 }
