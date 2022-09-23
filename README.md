@@ -1,6 +1,8 @@
-# Estruturas de Dados em C++
+# Estruturas de Dados e Algoritmos em C++
 
 Aqui foram implementadas as seguintes estruturas de dados:
+
+## Estruturas de Dados
 
 - **Lista Ligada** (linked list)
 - **Fila** (queue)
@@ -9,14 +11,19 @@ Aqui foram implementadas as seguintes estruturas de dados:
 - **Heap** (Max e Min)
 - **Lista de Prioridade**
 
+## Algoritmos
+
+- **busca linear**
+- **busca binária**
+- **ordenação por seleção** (selection sort)
+- **ordenação por inserção** (insertion sort)
+
 ## Testar
 
-para testar o programa basta compilar todos os arquivos .cpp e executar.
+para testar tenha certeza que você tem instalado o `make` e o `g++`. Com isso basta executar o seguinte comando:
 
 ```bash
-# na pasta com os arquivos .cpp
-g++ *.cpp -o main.exe
-main.exe
+make run
 ```
 
-No arquivo `main.cpp` tem um exemplo de uso para cada estrutura de dado.
+isso vai compilar todos os arquivos `.cpp` e executar o programa de teste.

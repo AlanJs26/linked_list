@@ -66,13 +66,13 @@ void Heap::upwardsHeapify(int index){
 
 int Heap::filhoEsquerda(int index){
     return 2*(index+1)-1;
-};
+}
 int Heap::filhoDireita(int index){
     return 2*(index+1);
-};
+}
 int Heap::pai(int index){
     return index/2;
-};
+}
 
 bool Heap::validIndex(int index){
     return index >= 0 && index < tamanho && list[index] != NULL;
@@ -85,16 +85,20 @@ void Heap::heapify(int index){
     int maior = index;
     if(esquerda <= heapSize &&
       (validIndex(esquerda) && validIndex(index) &&
-      (isMax && list[esquerda]->chave > list[index]->chave ||
-      !isMax && list[esquerda]->chave < list[index]->chave)
+      ((isMax && list[esquerda]->chave > list[index]->chave) ||
+      (!isMax && list[esquerda]->chave < list[index]->chave))
       )
       ){
         maior = esquerda;
     }
     if(direita <= heapSize &&
-      (validIndex(direita) && validIndex(maior) &&
-      (isMax && list[direita]->chave > list[maior]->chave ||
-      !isMax && list[direita]->chave < list[maior]->chave))
+      (
+        validIndex(direita) && validIndex(maior) &&
+        (
+            (isMax && list[direita]->chave > list[maior]->chave) ||
+            (!isMax && list[direita]->chave < list[maior]->chave)
+        )
+      )
       ){
         maior = direita;
     }
