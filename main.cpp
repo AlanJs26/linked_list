@@ -5,6 +5,7 @@
 #include "algorithms/binarySearch.cpp"
 #include "algorithms/selectionSort.cpp"
 #include "algorithms/insertionSort.cpp"
+#include "algorithms/mergeSort.cpp"
 
 
 #include <iostream>
@@ -80,10 +81,19 @@ void testAlgorithms(){
   
 }
 
+void testMergeSort(){
+  int mylist[] = {9,3,4,2,8,7,10,5};
+  List arr = List(mylist, 8);
+  arr.print();
+  mergeSort(arr, 0, 7);
+  arr.print();
+}
+
 int main () {
   // srand(time(NULL));
   // testAllDataStructures();
-  testAlgorithms();
+  // testAlgorithms();
+  testMergeSort();
 
 
   return 0;

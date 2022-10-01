@@ -24,11 +24,11 @@ List::List(int arr[], int tamanho){
 }
 
 List::~List(){
-    for (int i = 0; i < tamanho; i++)
-    {
-        if(list[i] != NULL)
-            delete list[i];
-    }
+    // for (int i = 0; i < tamanho; i++)
+    // {
+        // if(list[i] != NULL)
+            // delete list[i];
+    // }
     delete[] list;
 }
 
@@ -43,8 +43,8 @@ void List::swap(int aIndex, int bIndex){
 }
 
 void List::set(int index, Item* x){
-    if(list[index] != NULL)
-        delete list[index];
+    // if(list[index] != NULL)
+        // delete list[index];
 
     list[index] = x;
 }

@@ -17,6 +17,7 @@ Aqui foram implementadas as seguintes estruturas de dados:
 - **busca binária**
 - **ordenação por seleção** (selection sort)
 - **ordenação por inserção** (insertion sort)
+- **ordenação por mescla** (merge sort)
 
 ## Testar
 
