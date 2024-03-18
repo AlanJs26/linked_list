@@ -21,10 +21,14 @@ Aqui foram implementadas as seguintes estruturas de dados:
 
 ## Testar
 
-para testar tenha certeza que você tem instalado o `make` e o `g++`. Com isso basta executar o seguinte comando:
+para testar tenha certeza que você tem instalado o `make`, `g++`, `cmake` e `ninja`. Com isso, basta executar os seguintes comandos:
 
 ```bash
-make run
+mkdir build
+cd build
+cmake -G Ninja ..
+ninja
+./main
 ```
 
 isso vai compilar todos os arquivos `.cpp` e executar o programa de teste.
