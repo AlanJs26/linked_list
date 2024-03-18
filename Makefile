@@ -8,7 +8,7 @@ CPP = $(wildcard *.cpp algorithms/*.cpp)
 all: run
 
 run: main.exe
-	main.exe
+	./main.exe
 
 main.exe: ${CPP}
 	@echo "Compiling all .cpp files"
